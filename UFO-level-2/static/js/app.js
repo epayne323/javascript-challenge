@@ -52,7 +52,7 @@ filterBtn.on("click", function()
         filteredData = filteredData.filter(sighting => sighting[k] === v);
     });
 
-
+    // build table from the data matching the search criteria
     buildTable(filteredData);
 });
 
@@ -60,12 +60,14 @@ filterBtn.on("click", function()
 var clearBtn = d3.select("#clear-btn");
 clearBtn.on("click", function()
 {
+    // set the input fields to blank
     d3.select("#datetime").property("value", "");
     d3.select("#city").property("value", "");
     d3.select("#state").property("value", "");
     d3.select("#country").property("value", "");
     d3.select("#shape").property("value", "");
 
+    // remove existing items from table and build the table from all data
     tbody.selectAll("td").remove();
     buildTable(data);
 });
